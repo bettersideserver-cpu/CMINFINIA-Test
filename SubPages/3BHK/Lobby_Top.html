@@ -52,33 +52,38 @@
         }
 
         .button1 {
-            top: 40%;
-            left: 34%;
+            top: 70%;
+            left: 64%;
         }
 
         .button2 {
-            top: 46%;
-            left: 62%;
+            top: 50%;
+            left: 35%;
         }
 
         .button3 {
-            top: 35%;
-            left: 57%;
+            top: 38%;
+            left: 33%;
         }
 
         .button4 {
-            top: 25%;
-            left: 37%;
+            top: 59%;
+            left: 65%;
         }
 
         .button5 {
-            top: 70%;
-            left: 57%;
+            top: 65%;
+            left: 33%;
         }
 
         .button6 {
             top: 50%;
-            left: 35%;
+            left: 53%;
+        }
+
+        .button7 {
+            top: 38%;
+            left: 65%;
         }
 
 
@@ -268,7 +273,10 @@
                 Room 3
             </button>
             <button class="touch-button button6" onclick="window.location.href='360/Dinning.html'">
-                Dinning Table
+                Dinning
+            </button>
+            <button class="touch-button button7" onclick="window.location.href='360/Room_4.html'">
+                Kid Room
             </button>
         </div>
     </div>
@@ -276,12 +284,13 @@
     <!-- Bottom Center Panel -->
     <nav class="jumpbar" role="navigation" aria-label="Quick jumps">
         <div class="jumpbar-inner">
-            <button class="jumpchip is-accent" id="playWalkthroughBtn">🎥 Walkthrough</button>
+            <!-- <button class="jumpchip is-accent" id="playWalkthroughBtn">🎥 Walkthrough</button> -->
             <button class="jumpchip" onclick="location.href='./360/Kitchen.html'">Kitchen</button>
             <button class="jumpchip" onclick="location.href='./360/Lobby.html'">Lobby</button>
             <button class="jumpchip" onclick="location.href='./360/Room_1.html'">Room 1</button>
             <button class="jumpchip" onclick="location.href='./360/Room_2.html'">Room 2</button>
             <button class="jumpchip" onclick="location.href='./360/Room_3.html'">Room 3</button>
+            <button class="jumpchip" onclick="location.href='./360/Room_4.html'">Kid Room</button>
             <button class="jumpchip" onclick="location.href='./360/Dinning.html'">Dinning Table</button>
             <button class="jumpchip is-accent" id="openEnquiry">📞 Request Call Back</button>
 
@@ -289,12 +298,12 @@
             <!-- add more as you like -->
         </div>
     </nav>
-    <div id="videoOverlay" class="video-overlay">
+    <!-- <div id="videoOverlay" class="video-overlay">
         <video id="walkthroughVideo" controls preload="none">
             <source src="./../../Video/Lutyen Lobby.webm" type="video/webm">
             Your browser does not support the video tag.
         </video>
-    </div>
+    </div> -->
     <!-- Request Callback Modal -->
     <div class="callback-enquiry">
         <div class="callback-overlay" id="enquiryOverlay" aria-hidden="true">
