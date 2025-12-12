@@ -181,7 +181,7 @@ body {
     pointer-events: auto;
     cursor: pointer;
     stroke: transparent;
-    stroke-width: 10px;
+    stroke-width: 8px;
     stroke-linejoin: round;
     stroke-linecap: round;
     transition: stroke 0.3s ease, fill 0.3s ease;
@@ -191,17 +191,17 @@ body {
 .Cutout path:hover {
     /* stroke: rgb(141, 127, 205);
     fill: rgba(0, 0, 255, 0.2); */
-    stroke: #C49A6C;
-    fill: rgba(196, 154, 108, 0.3);
+    stroke: #004771;
+    fill: rgba(0, 71, 113, 0.4);
 }
 
 
 .Cutout path.selected {
     /* stroke: rgb(255, 140, 0); */
     /* stroke: rgb(233, 182, 59); */
-    stroke: #C49A6C;
+    stroke: #00629b;
     /* Orange */
-    fill: rgba(255, 140, 0, 0.3);
+    fill: rgba(0, 71, 113, 0.5);
 }
 
 
@@ -702,7 +702,7 @@ body {
 .explore-btn:hover {
     /* background-color: #ea580c; */
     /* background-color: #9C6A3B; */
-    background-color: #A88E68;
+    background-color: #004771;
 }
 
 .image-placeholder {
