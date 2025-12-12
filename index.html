@@ -485,7 +485,7 @@
             // 1) Configure content for each tower here
             const INFO = {
                 Tower_A: {
-                    title: 'Tower_A',
+                    title: 'Tower_A-B',
                     lowImg: 'images/Thumbnail/Icon/Tower_A.webp',
                     img: 'images/Thumbnail/Icon/Tower_A.jpg',
                     link: 'SubPages/Tower_A.html',
@@ -588,6 +588,11 @@
                 // Show card
                 infoCard.style.display = 'flex';
             }
+            const KEY_MAP = {
+                "Tower_E-F": "Tower_C",
+                "Tower_C-D": "Tower_B",
+                "Tower_A-B": "Tower_A"
+            };
 
 
             // 2) Wire up just the two paths
@@ -597,7 +602,9 @@
 
                     // which tower?
                     const key = (path.getAttribute('data-name') || path.id || '').trim();
-                    const info = INFO[key];
+                    const normalizedKey = KEY_MAP[key] || key;
+                    const info = INFO[normalizedKey];
+
                     if (!info) return; // ignore any other paths
 
                     // selection styling

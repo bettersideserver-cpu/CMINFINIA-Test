@@ -594,8 +594,8 @@ body {
     left: 60px;
     /* background-color: #1e1e1e; */
     /* background-color: #0e1638; */
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: #080e24;
+    color: rgb(255, 255, 255);
     padding: 20px;
     padding-top: 20px;
     border-radius: 20px;
@@ -689,7 +689,8 @@ body {
     /* background-color: #B17B4E; */
     /* background-color: #B86440; */
     /* background-color: #BBA37D; */
-    background-color: #d4ae5f;
+    /* background-color: #d4ae5f; */
+    background-color: #009bf7;
     border: none;
     color: white;
     font-size: 16px;
@@ -809,7 +810,7 @@ body {
     max-width: 96vw;
     padding: 10px 12px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(8, 14, 36, 0.75); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
@@ -840,7 +841,7 @@ body {
 .jumpchip {
     appearance: none;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    background:#17235a;
+    background:#00649e;
     color: #fff;
     /* color: #DAA520; */
     /* color: #FFC30B; */
