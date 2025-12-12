@@ -23,7 +23,7 @@
     z-index: 5;
     /* --pin-color: #ff6a00; */
     --pin-color: #009bf7;
-    --pulse-color: rgba(0, 155, 247, .7);
+    --pulse-color: rgba(255, 255, 255, .7);
     isolation: isolate;
 }
 
@@ -44,7 +44,7 @@
     display: grid;
     place-items: center;
     border: 1px solid rgba(255, 255, 255, .18);
-    background: rgba(8, 14, 36, 0.72); 
+    background: rgba(255, 255, 255, 0.72); 
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     cursor: pointer;
