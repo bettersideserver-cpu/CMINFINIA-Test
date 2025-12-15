@@ -38,19 +38,32 @@
             pointer-events: none;
         }
 
+        @media (max-width: 600px) {
+            .content-wrapper img {
+                width: 100vw;
+                /* mobile: fit by width */
+                height: auto;
+            }
+        }
+
+
         .touch-button {
             position: absolute;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%) scale(var(--btn-scale, 1));
+            transform-origin: center center;
+
             padding: 12px 12px;
             font-size: 16px;
             background: rgba(255, 255, 255, 0.8);
-            /* background: rgba(0, 100, 158, 0.8); */
             border: 2px solid rgba(0, 0, 0, 0.2);
             border-radius: 10px;
-            color: rgb(0, 0, 0);
+            color: #000;
             cursor: pointer;
             z-index: 10;
         }
+
 
         .button1 {
             top: 70%;
@@ -123,7 +136,12 @@
             .close-btn2 {
                 top: 50px;
                 left: 30px;
+            }
 
+            .touch-button {
+                --btn-scale: 0.75;
+                font-size: 14px;
+                padding: 10px 10px;
             }
 
         }
@@ -268,10 +286,10 @@
                 Lobby
             </button>
             <button class="touch-button button4" onclick="window.location.href='360/Room_1.html'">
-                Room 1
+                Room 4
             </button>
             <button class="touch-button button3" onclick="window.location.href='360/Room_2.html'">
-                Room 2
+                Room 1
             </button>
             <button class="touch-button button5" onclick="window.location.href='360/Room_3.html'">
                 Room 3
@@ -280,7 +298,7 @@
                 Dinning
             </button>
             <button class="touch-button button7" onclick="window.location.href='360/Room_4.html'">
-                Kid Room
+                Room 2
             </button>
         </div>
     </div>
@@ -294,7 +312,7 @@
             <button class="jumpchip" onclick="location.href='./360/Room_1.html'">Room 1</button>
             <button class="jumpchip" onclick="location.href='./360/Room_2.html'">Room 2</button>
             <button class="jumpchip" onclick="location.href='./360/Room_3.html'">Room 3</button>
-            <button class="jumpchip" onclick="location.href='./360/Room_4.html'">Kid Room</button>
+            <button class="jumpchip" onclick="location.href='./360/Room_4.html'">Room 4</button>
             <button class="jumpchip" onclick="location.href='./360/Dinning.html'">Dinning Table</button>
             <button class="jumpchip is-accent" id="openEnquiry">📞 Request Call Back</button>
 
