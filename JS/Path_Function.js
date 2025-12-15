@@ -11,42 +11,36 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function updateDetailsFromName(name) {
         if (!detailsEl) return;
-        const match = (name || '').match(/\d+/);
+
+        const match = name.match(/\d+/);
         const floorNum = match ? parseInt(match[0], 10) : null;
 
-        if (floorNum === 19 || floorNum === 20) {
-            detailsEl.innerHTML = `
-    <div>
-      <span><strong>Total Units:</strong></span>
-      <span>4</span>
-    </div>
-    <div>
-      <span><strong>Size:</strong></span>
-      <span>Penthouse- 3 BHK<br>2 Floor<br>2 Lobby</span>
-    </div>
-    <div>
-      <span><strong>Partition:</strong></span>
-      <span>A1 | A2 | A3</span>
-    </div>
-  `;
+        if (!floorNum) {
+            detailsEl.innerHTML = `<div>No floor data</div>`;
+            return;
         }
+
+        /* -------- QUERY 1: FLOORS 1–10 -------- */
+        if (floorNum >= 1 && floorNum <= 32) {
+            detailsEl.innerHTML = `
+            <div><strong>Total Units:</strong>2</div>
+            <div><strong>Type:</strong>4 BHK</div>
+            <div><strong>Area:</strong>4600 Sq.ft.</div>
+        `;
+        }
+
+        /* -------- QUERY 2: FLOORS 11–33 -------- */
         else {
             detailsEl.innerHTML = `
-          <div>
-            <span><strong>Total Units:</strong></span>
-            <span>8</span>
-          </div>
-          <div>
-            <span><strong>Size:</strong></span>
-            <span>3 BHK + 1</span>
-          </div>
-          <div>
-      <span><strong>Partition:</strong></span>
-      <span>A1 | A2 | A3</span>
-    </div>
+            <div><strong>Total Units:</strong>1</div>
+            <div><strong>Type:</strong>Penthouse</div>
+            <div><strong>Area:</strong>15000 Sq.ft.</div>
         `;
         }
     }
+
+
+
 
     function setExploreState(hasLink) {
         if (!modalButton) return;
