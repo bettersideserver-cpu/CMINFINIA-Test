@@ -1,7 +1,7 @@
 
 (function () {
     // TODO: replace with your target number in international format (no + or 00)
-    const PHONE_NUMBER = "917986519697"; // e.g. 919812345678
+    const PHONE_NUMBER = "91"; // e.g. 919812345678
 
     const fab = document.getElementById('waFab');
     const label = document.getElementById('waLabel');
