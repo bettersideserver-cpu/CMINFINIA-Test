@@ -132,3 +132,22 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (!sessionStorage.getItem("floorHintShown")) {
+
+        const paths = document.querySelectorAll(".Cutout path");
+
+        paths.forEach(p => p.classList.add("svg-hint"));
+
+        setTimeout(() => {
+            paths.forEach(p => {
+                p.classList.add("done");
+                p.classList.remove("svg-hint");
+            });
+        }, 2600);
+
+        sessionStorage.setItem("floorHintShown", "true");
+    }
+
+});

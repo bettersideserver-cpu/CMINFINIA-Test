@@ -4,6 +4,66 @@ body {
     user-select: none;
 }
 
+/* ABOUT – MINIMAL NAV STYLE */
+.about-nav {
+    position: fixed;
+    top: 26px;
+    right: 26px;
+    z-index: 15000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 18px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    transition: all 0.3s ease;
+}
+
+/* GOLD LINE */
+.about-line {
+    width: 3px;
+    height: 16px;
+    background: #FEBD14;
+    border-radius: 2px;
+}
+
+/* HOVER */
+.about-nav:hover {
+    background: rgba(254, 189, 20, 0.9);
+    color: #000;
+}
+
+.about-nav:hover .about-line {
+    background: #000;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .about-nav {
+        top: 16px;
+        right: 16px;
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .about-line {
+        height: 14px;
+    }
+}
+
 /* ────────────────────────────────
    WhatsApp Floating Button (Clean)
    ──────────────────────────────── */
@@ -267,17 +327,21 @@ body {
 .Cutout path:hover {
     /* stroke: rgb(141, 127, 205);
     fill: rgba(0, 0, 255, 0.2); */
-    stroke: #004771;
-    fill: rgba(0, 71, 113, 0.4);
+    /* stroke: #004771; */
+    stroke: #a3845d;
+    /* fill: rgba(0, 71, 113, 0.4); */
+    fill: rgba(186, 167, 145, 0.4);
 }
 
 
 .Cutout path.selected {
     /* stroke: rgb(255, 140, 0); */
     /* stroke: rgb(233, 182, 59); */
-    stroke: #00629b;
+    /* stroke: #00629b; */
+    stroke: #8d7252;
     /* Orange */
-    fill: rgba(0, 71, 113, 0.5);
+    /* fill: rgba(0, 71, 113, 0.5); */
+    fill: rgba(163, 146, 128, 0.5);
 }
 
 
