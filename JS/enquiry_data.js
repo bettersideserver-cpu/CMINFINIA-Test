@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbzK8mD3jIf-PV3SYlCTpShqk4dYqNyvJX9Ki-Hu01KrVTY6Iq1AA7mOCBQ_Tn5mJsbJaw/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycby4V_uQr7mXL3WjDWDVFjwk5qp66wlDFjrzQJsN889JJlvdMWD_Z6Qtre1maLFM_2lPFA/exec";
 
 (function handleEnquiryForm() {
     const form = document.getElementById("enquiryForm");
