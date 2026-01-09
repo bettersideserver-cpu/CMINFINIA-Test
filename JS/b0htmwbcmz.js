@@ -1,4 +1,4 @@
-// JS/TowerPins.js
+// JS/b0htmwbcmz.js
 (function () {
     function initTowerPins(opts) {
         const svg = document.querySelector(opts.svgSelector || '.Cutout svg');
