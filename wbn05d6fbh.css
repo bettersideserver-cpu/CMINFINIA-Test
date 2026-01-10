@@ -32,6 +32,85 @@ body {
     transition: all 0.3s ease;
 }
 
+/* SINGLE HEADER CONTAINER */
+.top-header {
+    position: fixed;
+    top: 26px;
+    right: 26px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* shared button style */
+.top-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+
+    transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease;
+    white-space: nowrap;
+}
+
+/* About = subtle / glass */
+.top-btn--ghost {
+    color: #ffffff;
+    background: transparent;
+}
+
+.top-btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.10);
+    transform: translateY(-1px);
+}
+
+/* Contact = highlighted */
+.top-btn--accent {
+    color: #000;
+    background: #FEBD14;
+}
+
+.top-btn--accent:hover {
+    background: #ffd24f;
+    transform: translateY(-1px);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .top-header {
+        top: 16px;
+        right: 16px;
+        padding: 6px;
+        gap: 8px;
+    }
+
+    .top-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Contact button position (same style) */
+.contact-nav {
+    right: 160px;
+    /* move left so it sits beside About */
+}
+
 /* GOLD LINE */
 .about-line {
     width: 3px;
@@ -63,6 +142,13 @@ body {
         height: 14px;
     }
 }
+
+@media (max-width: 600px) {
+    .contact-nav {
+        right: 140px;
+    }
+}
+
 
 /* ────────────────────────────────
    WhatsApp Floating Button (Clean)
