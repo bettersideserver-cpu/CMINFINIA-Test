@@ -178,6 +178,46 @@
             letter-spacing: 1px;
             color: #000000;
         }
+
+        @media (max-width: 600px) {
+            .rera-blueprint {
+
+                left: 10px;
+                transform: scale(.7);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .top-header {
+                position: fixed !important;
+                top: 10px !important;
+                right: 10px !important;
+                left: auto !important;
+                z-index: 99999 !important;
+
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 8px !important;
+
+                width: auto !important;
+            }
+
+            .top-header a,
+            .top-header .top-btn {
+                display: inline-flex !important;
+                /* ✅ this is the key */
+                flex: 0 0 auto !important;
+                width: auto !important;
+                max-width: none !important;
+
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+                line-height: 1 !important;
+
+                white-space: nowrap !important;
+            }
+        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNGY9BHWQ8"></script>
