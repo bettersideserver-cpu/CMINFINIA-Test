@@ -46,7 +46,7 @@ body {
     padding: 8px;
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgb(221, 221, 221);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -57,6 +57,7 @@ body {
     align-items: center;
     justify-content: center;
 
+    font: 600 14px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial;
     padding: 10px 14px;
     border-radius: 999px;
     text-decoration: none;
@@ -70,12 +71,12 @@ body {
 
 /* About = subtle / glass */
 .top-btn--ghost {
-    color: #ffffff;
+    color: #000000;
     background: transparent;
 }
 
 .top-btn--ghost:hover {
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.59);
     transform: translateY(-1px);
 }
 
