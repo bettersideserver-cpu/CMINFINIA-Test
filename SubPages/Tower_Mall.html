@@ -25,17 +25,277 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title>CM Infinia</title>
     <link rel="stylesheet" href="./../wbn05d6fbh.css">
     <link rel="stylesheet" href="./../JS/Notification/bz0mp28u74.css">
-    <style>
+   <style>
         @media (max-width: 600px) {
             .Front {
                 position: fixed;
-                /* make .Front itself the viewport-anchored box */
-                top: 50%;
-                left: 55%;
-                transform: translate(-50%, -50%) scale(1.3);
+                top: 55%;
+                left: 50%;
             }
         }
+
+        /* ══════════════════════════════════════
+           REQUEST CALL BACK — vertical side tab
+           ══════════════════════════════════════ */
+        .enquiry-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10001;
+
+            /* Vertical text without rotation — stays fully on screen */
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+
+            padding: 22px 11px;
+            background: #0078be;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.7px;
+            border: none;
+            border-radius: 8px 0 0 8px;   /* rounded left corners only */
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: -4px 0 16px rgba(0,0,0,0.22);
+            transition: background 0.2s ease, padding 0.2s ease;
+        }
+        .enquiry-btn {
+    transition: opacity 0.3s ease, background 0.2s ease, padding 0.2s ease;
+}
+
+.enquiry-btn.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+        .enquiry-btn:hover {
+            background: #b8936a;
+            padding: 22px 14px;
+        }
+
+        @media (max-width: 600px) {
+            .enquiry-btn {
+                font-size: 11px;
+                padding: 16px 9px;
+            }
+        }
+
+        /* ══════════════════════════════════════
+           SLIDE-IN PANEL — overlay backdrop
+           ══════════════════════════════════════ */
+        .enquiry .overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+            /* invisible + non-interactive by default */
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            z-index: 10000;
+            pointer-events: none;
+            transition: background 0.35s ease, backdrop-filter 0.35s ease;
+        }
+
+        .enquiry .overlay.is-open {
+            background: rgba(0, 0, 0, 0.52);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            pointer-events: auto;
+        }
+
+        /* ══════════════════════════════════════
+           SLIDE PANEL — the actual form drawer
+           ══════════════════════════════════════ */
+        .enquiry .modal {
+            width: min(400px, 100vw);
+            height: 100%;
+            background: rgba(16, 17, 20, 0.1);
+            border-left: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0;
+            box-shadow: -12px 0 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            /* Starts hidden off to the right */
+            transform: translateX(100%);
+            transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        /* Slides in when overlay gets .is-open */
+        .enquiry .overlay.is-open .modal {
+            transform: translateX(0);
+        }
+
+        /* Header row */
+        .enquiry .modal-header {
+            padding: 20px 20px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Gold accent bar */
+        .enquiry .modal-header::before {
+            content: '';
+            flex-shrink: 0;
+            width: 3px;
+            height: 22px;
+            background: #C9A87C;
+            border-radius: 2px;
+        }
+
+        .enquiry .modal-header .title {
+            flex: 1;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        .enquiry .close {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            color: #d7d7db;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .enquiry .close:hover { background: rgba(255,255,255,0.14); }
+
+        /* Scrollable body */
+        .enquiry .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Form grid */
+        .enquiry .form {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Shared input style */
+        .enquiry .input,
+        .enquiry .select,
+        .enquiry .phone {
+            width: 100%;
+            box-sizing: border-box;
+            background: #e9eaed;
+            border: 1px solid #cfd2d8;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #0f0f11;
+        }
+        .enquiry .input::placeholder { color: #b9bcc4; }
+
+        .enquiry .select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5" fill="none" stroke="%23555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+
+        .enquiry .phone {
+            display: flex;
+            padding: 0;
+        }
+        .enquiry .phone select {
+            appearance: none;
+            border: none;
+            border-right: 1px solid #cfd2d8;
+            padding: 0 10px;
+            min-width: 72px;
+            background: transparent;
+            color: #3a3a3f;
+            font-size: 14px;
+        }
+        .enquiry .phone input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .enquiry .agree {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+            color: #a0a0a8;
+        }
+        .enquiry .agree a { color: #C9A87C; text-decoration: underline; }
+
+        .enquiry .submit {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            font-weight: 700;
+            font-size: 15px;
+            background: #0078be;
+            color: #111;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: background 0.2s ease;
+        }
+        .enquiry .submit:hover { background: #b8936a; }
+
+        /* Spinner on busy */
+        .submit[aria-busy="true"] {
+            position: relative;
+            pointer-events: none;
+            opacity: .8;
+        }
+        .submit[aria-busy="true"]::after {
+            content: "";
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            border-right-color: transparent;
+            animation: spin .7s linear infinite;
+        }
+        @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+        @media (max-width: 560px) {
+            .enquiry .modal { width: 100vw; }
+        }
+        /* Poppins font for enquiry panel */
+.enquiry .modal,
+.enquiry .form,
+.enquiry .input,
+.enquiry .select,
+.enquiry .phone,
+.enquiry .title,
+.enquiry .submit,
+.enquiry .agree {
+    font-family: 'Poppins', sans-serif;
+}
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body> 
@@ -109,7 +369,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="info-details" id="details"></div>
 
             <button class="explore-btn" id="navigateButton">Explore</button>
-            <button class="enquiry-btn" id="openEnquiry">Enquiry Call</button>
+          
+            
         </div>
     </div>
     <!-- Floor tooltip -->
@@ -129,45 +390,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
 
-    <div class="enquiry">
-        <div class="overlay" id="enquiryOverlay" aria-hidden="true">
-            <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
-                <div class="modal-header">
-                    <div id="enquiryTitle" class="title">Request Callback</div>
-                    <button class="close" id="closeBtn" aria-label="Close">✕</button>
-                </div>
+    
+<!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
+  <div class="enquiry">
+    <div class="overlay" id="enquiryOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
+            <div class="modal-header">
+                <div id="enquiryTitle" class="title">Request Callback</div>
+                <button class="close" id="closeBtn" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="enquiryForm" class="form" novalidate>
 
-                <div class="modal-body">
-                    <form id="enquiryForm" class="form" novalidate>
-                        <div class="two">
-                            <input class="input" name="firstName" placeholder="First Name" required />
-                            <input class="input" name="lastName" placeholder="Last Name" required />
-                        </div>
+                    <input class="input" name="fullName" placeholder="Full Name" required />
 
-                        <div class="phone">
-                            <select name="dialCode" aria-label="Country Code">
-                                <option>+91</option>
-                                <option>+971</option>
-                                <option>+44</option>
-                                <option>+1</option>
-                            </select>
-                            <input type="tel" name="phone" placeholder="Phone Number" required />
-                        </div>
+                    <div class="phone">
+                        <select name="dialCode" aria-label="Country Code">
+                            <option>+91</option>
+                            <option>+971</option>
+                            <option>+44</option>
+                            <option>+1</option>
+                        </select>
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone Number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                            required
+                        />
+                    </div>
 
-                        <input class="input" type="email" name="email" placeholder="Email Address" required />
+                    <input class="input" name="city" placeholder="City" required />
 
-                        <label class="agree">
-                            <input type="checkbox" id="agree" />
-                            <span>I agree to the <a href="#">Privacy Policy</a> and
-                                <a href="#">Terms & Conditions</a>.</span>
-                        </label>
+                    <input
+                        class="input"
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                        required
+                    />
 
-                        <button class="submit" type="submit">Submit</button>
-                    </form>
-                </div>
+                    <select class="input select" name="preferredTime" required>
+                        <option value="" disabled selected>Preferred Time to Call</option>
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+
+                    <!-- Google reCAPTCHA — replace YOUR_SITE_KEY -->
+                    <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
+
+                    <button class="submit" type="submit">Request a Call Back</button>
+
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<button class="enquiry-btn" id="openEnquiry">Request Call Back</button>
+ 
 
     <!-- Bottom Center Panel -->
 
@@ -191,7 +477,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <script src="./../JS/BackButton.js"></script>
     <script src="./../JS/ekdxgbwr0o.js"></script>
-    <script src="./../JS/bz021sxwxo.js"></script>
+   <script src="./../JS/bz021sxwxo.js"></script>
     <script src="./../JS/s2dlrxbqxj.js"></script>
     <script src="./../JS/5guwuzaijb.js"></script>
     <script src="./../JS/ky0nwmerow.js"></script>
