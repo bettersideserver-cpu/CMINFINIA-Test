@@ -1,5 +1,4 @@
-const scriptURL1 = 'https://script.google.com/macros/s/AKfycbx-LKN11CGP5Ot6DDVbLCpAzUK9GQR_8JIuo3H7_pXfX-W1zXg04QQXEBb79Cu_Fb3fzg/exec';// cm
-const scriptURL2 = 'https://script.google.com/macros/s/AKfycbzK8mD3jIf-PV3SYlCTpShqk4dYqNyvJX9Ki-Hu01KrVTY6Iq1AA7mOCBQ_Tn5mJsbJaw/exec';// betterside
+const scriptURL = 'https://script.google.com/macros/s/AKfycbykULHsW8RgnC0oerKvuUHtF5a3jQEamMZT0VWM0UO5j0RFkGsbVaHHDZsogk5fgEhW6Q/exec';
 
 (function handleEnquiryForm() {
     const form      = document.getElementById("enquiryForm");
@@ -55,15 +54,24 @@ const scriptURL2 = 'https://script.google.com/macros/s/AKfycbzK8mD3jIf-PV3SYlCTp
         e.preventDefault();
 
         const fd = new FormData(form);
+        fd.append("page_title", document.title);
+        fd.append("page_url", location.href);
+        fd.append("page_path", location.pathname);
+        fd.append("referrer", document.referrer || "");
+        fd.append("tower", sessionStorage.getItem("lastTower") || "");
+        fd.append("floor_name", sessionStorage.getItem("lastFloorName") || "");
+        fd.append("floor_link", sessionStorage.getItem("lastFloorLink") || "");
+
+        const params = new URLSearchParams(location.search);
+        ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(k => {
+            if (params.has(k)) fd.append(k, params.get(k));
+        });
 
         setFormBusy(true);
         submitBtn.textContent = 'Submitting...';
 
         try {
-            await Promise.all([
-                fetch(scriptURL1, { method: "POST", mode: "no-cors", body: fd }),
-                fetch(scriptURL2, { method: "POST", mode: "no-cors", body: fd })
-            ]);
+            await fetch(scriptURL, { method: "POST", mode: "no-cors", body: fd });
         } catch (err) {
             console.error(err);
         } finally {

@@ -523,21 +523,38 @@ body {
     background: #33353c;
 }
 
+/* Replace existing .enquiry-btn styles */
 .enquiry-btn {
-    margin-top: 10px;
-    width: 100%;
-    padding: 10px 12px;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    margin: 0;
+    padding: 12px 20px;
     font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
     border: 0;
-    border-radius: 10px;
-    border: 2px solid #BBA37D;
-    background: #2a2b30;
+    border-radius: 8px 8px 0 0;
+    background: #C9A87C;
     color: #fff;
     cursor: pointer;
+    z-index: 10001;
+    white-space: nowrap;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.2);
+    transition: background 0.2s ease;
 }
 
 .enquiry-btn:hover {
-    background: #33353c;
+    background: #b8936a;
+}
+
+@media (max-width: 600px) {
+    .enquiry-btn {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
 }
 
 
@@ -566,7 +583,9 @@ body {
 
 /* Make "Request Callback" white */
 .enquiry .modal-header .title {
+   
     color: #fff;
+    
     /* white */
 }
 
@@ -686,7 +705,7 @@ body {
 }
 
 .enquiry .agree a {
-    color: #f7901e;
+    color: #009bf7;
     text-decoration: underline;
     text-underline-offset: 2px;
 }
@@ -699,13 +718,15 @@ body {
     padding: 12px 14px;
     font-weight: 700;
     font-size: 16px;
-    background: #ff7a1a;
+    /* background: #ff7a1a; */
+    background: #009bf7;
     color: #111;
     cursor: pointer;
 }
 
 .enquiry .submit:hover {
-    background: #ff6a00;
+    /* background: #ff6a00; */
+    background: #0078be;
 }
 
 @media (max-width:560px) {
