@@ -295,6 +295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -430,51 +431,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- ══ SLIDE-IN ENQUIRY PANEL ══ -->
-    <div class="enquiry">
-        <div class="overlay" id="enquiryOverlay" aria-hidden="true">
-            <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
-                <div class="modal-header">
-                    <div id="enquiryTitle" class="title">Request Callback</div>
-                    <button class="close" id="closeBtn" aria-label="Close">✕</button>
-                </div>
-                <div class="modal-body">
-                    <form id="enquiryForm" class="form" novalidate>
+  <div class="enquiry">
+    <div class="overlay" id="enquiryOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="enquiryTitle">
+            <div class="modal-header">
+                <div id="enquiryTitle" class="title">Request Callback</div>
+                <button class="close" id="closeBtn" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="enquiryForm" class="form" novalidate>
 
-                        <input class="input" name="fullName" placeholder="Full Name" required />
+                    <input class="input" name="fullName" placeholder="Full Name" required />
 
-                        <div class="phone">
-                            <select name="dialCode" aria-label="Country Code">
-                                <option>+91</option>
-                                <option>+971</option>
-                                <option>+44</option>
-                                <option>+1</option>
-                            </select>
-                            <input type="tel" name="phone" placeholder="Phone Number" required />
-                        </div>
-
-                        <input class="input" name="city" placeholder="City" required />
-
-                        <input class="input" type="email" name="email" placeholder="Email Address" required />
-
-                        <select class="input select" name="preferredTime" required>
-                            <option value="" disabled selected>Preferred Time to Call</option>
-                            <option value="morning"> Morning </option>
-                            <option value="afternoon"> Afternoon </option>
-                            <option value="evening"> Evening</option>
+                    <div class="phone">
+                        <select name="dialCode" aria-label="Country Code">
+                            <option>+91</option>
+                            <option>+971</option>
+                            <option>+44</option>
+                            <option>+1</option>
                         </select>
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone Number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                            required
+                        />
+                    </div>
 
-                    
+                    <input class="input" name="city" placeholder="City" required />
 
-                        <button class="submit" type="submit">Request a Call Back</button>
+                    <input
+                        class="input"
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                        required
+                    />
 
-                    </form>
-                </div>
+                    <select class="input select" name="preferredTime" required>
+                        <option value="" disabled selected>Preferred Time to Call</option>
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+
+                    <!-- Google reCAPTCHA — replace YOUR_SITE_KEY -->
+                    <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
+
+                    <button class="submit" type="submit">Request a Call Back</button>
+
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- ✅ Tab always visible — outside every other container -->
-    <button class="enquiry-btn" id="openEnquiry">Request Call Back</button>
+<button class="enquiry-btn" id="openEnquiry">Request Call Back</button>
 
     <!-- Bottom Nav -->
     <nav class="jumpbar" role="navigation" aria-label="Quick jumps">

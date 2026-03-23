@@ -51,31 +51,50 @@ const scriptURL2 = 'https://script.google.com/macros/s/AKfycbzK8mD3jIf-PV3SYlCTp
         });
     })();
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        const fd = new FormData(form);
+    const phone = form.phone.value.trim();
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+    }
 
-        setFormBusy(true);
-        submitBtn.textContent = 'Submitting...';
+    const email = form.email.value.trim();
+    if (!email.includes('@') || !email.includes('.')) {
+        alert('Please enter a valid email address.');
+        return;
+    }
 
-        try {
-            await Promise.all([
-                fetch(scriptURL1, { method: "POST", mode: "no-cors", body: fd }),
-                fetch(scriptURL2, { method: "POST", mode: "no-cors", body: fd })
-            ]);
-        } catch (err) {
-            console.error(err);
-        } finally {
-            submitBtn.textContent = '✅ Submitted!';
-            form.reset();
-            setTimeout(() => {
-                hideEnquiryOverlay();
-                submitBtn.removeAttribute('aria-busy');
-                submitBtn.textContent = 'Request a Call Back';
-                setFormBusy(false);
-            }, 2000);
-        }
-    });
+    const captcha = grecaptcha.getResponse();
+    if (!captcha) {
+        alert('Please complete the captcha.');
+        return;
+    }
+
+    const fd = new FormData(form);
+
+    setFormBusy(true);
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+        await Promise.all([
+            fetch(scriptURL1, { method: "POST", mode: "no-cors", body: fd }),
+            fetch(scriptURL2, { method: "POST", mode: "no-cors", body: fd })
+        ]);
+    } catch (err) {
+        console.error(err);
+    } finally {
+        submitBtn.textContent = '✅ Submitted!';
+        form.reset();
+        grecaptcha.reset();
+        setTimeout(() => {
+            hideEnquiryOverlay();
+            submitBtn.removeAttribute('aria-busy');
+            submitBtn.textContent = 'Request a Call Back';
+            setFormBusy(false);
+        }, 2000);
+    }
+});
 
 })();
