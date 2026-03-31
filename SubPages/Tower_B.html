@@ -35,7 +35,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 left: 50%;
             }
         }
+.call-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
 
+              /* reduced gap */
+    padding: 11px 1px;           /* smaller height */
+
+    border-radius: 8px;           /* slightly tighter */
+    font-weight: 600;
+    font-size: 14px;              /* smaller text */
+    text-decoration: none;
+
+    background: #C9A87C;
+    color: #111;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    transition: all 0.2s ease;
+}
+
+/* hover */
+.call-btn:hover {
+    background: #0078be;
+    color: #fff;
+}
         /* ══════════════════════════════════════
            REQUEST CALL BACK — vertical side tab
            ══════════════════════════════════════ */
@@ -643,6 +669,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="g-recaptcha" data-sitekey="6Le6qZQsAAAAALlNrziohJHHqf43BSZvE1wfoxnl"></div>
 
                     <button class="submit" type="submit">Request a Call Back</button>
+                                    <a href="tel:+919876543210" class="call-btn">
+    📞 Call Now
+</a>
 
                 </form>
             </div>

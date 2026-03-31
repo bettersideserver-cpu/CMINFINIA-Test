@@ -29,6 +29,55 @@ overlay.addEventListener("click", (e) => {
   if (e.target === overlay) hideThankYou();
 });
 
+const callButton = document.getElementById("showCallOptionsBtn");
+const callOptions = document.getElementById("callOptionsContainer");
+const copyPhoneBtn = document.getElementById("copyPhoneBtn");
+const closeCallOptionsBtn = document.getElementById("closeCallOptionsBtn");
+const phoneNumber = "+91 7084770847";
+
+if (callButton && callOptions) {
+  callButton.addEventListener("click", () => {
+    const isActive = callOptions.classList.toggle("active");
+    callOptions.setAttribute("aria-hidden", isActive ? "false" : "true");
+    callButton.textContent = isActive ? "Hide Call Options" : "Show Call Options";
+  });
+}
+
+if (closeCallOptionsBtn && callOptions && callButton) {
+  closeCallOptionsBtn.addEventListener("click", () => {
+    callOptions.classList.remove("active");
+    callOptions.setAttribute("aria-hidden", "true");
+    callButton.textContent = "Show Call Options";
+  });
+}
+
+if (copyPhoneBtn) {
+  copyPhoneBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(phoneNumber);
+      alert(`Phone number ${phoneNumber} copied to clipboard.`);
+    } catch (err) {
+      console.warn("Clipboard write failed, fallback:", err);
+      const textArea = document.createElement("textarea");
+      textArea.value = phoneNumber;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      alert(`Phone number ${phoneNumber} copied to clipboard.`);
+    }
+  });
+}
+
+const callEnquiryBtn = document.getElementById("callEnquiryBtn");
+if (callEnquiryBtn && callButton && callOptions) {
+  callEnquiryBtn.addEventListener("click", () => {
+    callOptions.classList.add("active");
+    callOptions.setAttribute("aria-hidden", "false");
+    callButton.textContent = "Hide Call Options";
+  });
+}
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
