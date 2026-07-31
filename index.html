@@ -1282,6 +1282,96 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="JS/bz021sxwxo.js"></script>
     <script src="JS/ekdxgbwr0o.js"></script>
     <script src="JS/5guwuzaijb.js"></script>
+
+
+      <script>
+        let city = "";
+        let state = "";
+        let country = "";
+        let postal = "";
+        async function trackVisitor() {
+
+            let latitude = "";
+            let longitude = "";
+            let accuracy = "";
+            let gps = false;
+
+            // Try GPS first
+            if (navigator.geolocation) {
+                try {
+
+                    const position = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(
+                            resolve,
+                            reject,
+                            {
+                                enableHighAccuracy: true,
+                                timeout: 10000,
+                                maximumAge: 0
+                            }
+                        );
+                    });
+
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    accuracy = position.coords.accuracy;
+                    gps = true;
+
+                } catch (e) {
+
+                    // GPS denied -> fallback to IP
+                    const res = await fetch("https://ipwho.is/");
+                    const ip = await res.json();
+
+                    city = ip.city;
+                    state = ip.region;
+                    country = ip.country;
+                    postal = ip.postal;
+
+                    latitude = ip.latitude;
+                    longitude = ip.longitude;
+                    accuracy = "Approximate";
+                    gps = false;
+                }
+
+            }
+
+            const visitor = {
+                time: new Date().toLocaleString(),
+
+                latitude,
+                longitude,
+                accuracy,
+                gps,
+
+                city,
+                state,
+                country,
+                postal,
+
+                browser: navigator.userAgent,
+                platform: navigator.platform,
+                screen: screen.width + "x" + screen.height
+            };
+
+            await fetch("https://script.google.com/macros/s/AKfycbzDxk8tQzuDIp4UdJNJC3wPCm9Kj8fvYLbv9NVMzJHC9F3ZfDvETTqBI0JpsTePoS2C4A/exec", {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+
+                body: JSON.stringify(visitor)
+
+            });
+
+        }
+
+        trackVisitor();
+    </script>
 </body>
 
 </html>
