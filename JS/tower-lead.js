@@ -23,10 +23,9 @@
             </div>
             <p class="tower-lead-intro" id="tower-lead-intro">Share your details and our team will get in touch.</p>
             <form class="tower-lead-form">
-                <label class="tower-lead-field"><span>Name *</span><input name="fullName" type="text" autocomplete="name" required maxlength="100"></label>
+                <label class="tower-lead-field"><span>Full Name *</span><input name="fullName" type="text" autocomplete="name" required maxlength="100"></label>
                 <label class="tower-lead-field"><span>Phone Number *</span><input name="phone" type="tel" autocomplete="tel-national" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" title="Enter a 10-digit phone number" required></label>
-                <label class="tower-lead-field"><span>Email (optional)</span><input name="email" type="email" autocomplete="email" maxlength="254"></label>
-                <label class="tower-lead-field"><span>City *</span><input name="city" type="text" autocomplete="address-level2" required maxlength="100"></label>
+                <label class="tower-lead-field"><span>City (optional)</span><input name="city" type="text" autocomplete="address-level2" maxlength="100"></label>
                 <button class="tower-lead-submit" type="submit">Continue exploring</button>
                 <p class="tower-lead-error" role="alert" aria-live="polite"></p>
             </form>
@@ -55,7 +54,6 @@
         const data = new FormData(form);
         data.set("fullName", String(data.get("fullName") || "").trim());
         data.set("phone", String(data.get("phone") || "").trim());
-        data.set("email", String(data.get("email") || "").trim());
         data.set("city", String(data.get("city") || "").trim());
         data.append("formType", "visitor");
         data.append("page_title", document.title);
@@ -63,8 +61,8 @@
         data.append("page_path", location.pathname);
         data.append("source", "Visitor Form");
 
-        if (!data.get("fullName") || !data.get("city")) {
-            errorMessage.textContent = "Please enter your name and city.";
+        if (!data.get("fullName")) {
+            errorMessage.textContent = "Please enter your full name.";
             return;
         }
 

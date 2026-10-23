@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-N68LBFPB');</script>
 <!-- End Google Tag Manager -->
-<link rel="icon" type="image/ico" href="/images/favicon.ico">
+
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -639,9 +639,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 }
 </script>
+<link rel="icon" type="image/svg+xml" href="images/cm-infinia-logo.svg">
+<link rel="stylesheet" href="JS/cm-brand.css">
 </head>
 
-<body> 
+<body>
+ 
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N68LBFPB"
@@ -780,7 +783,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <button class="close" id="closeBtn" aria-label="Close">✕</button>
             </div>
             <div class="modal-body">
-                <form id="enquiryForm" class="form" novalidate>
+                <img class="cm-form-logo" src="images/cm-infinia-logo.svg" alt="CM Infinia">
+<form id="enquiryForm" class="form" novalidate>
 
                     <input class="input" name="fullName" placeholder="Full Name" required />
 
@@ -1277,160 +1281,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="JS/bz021sxwxo.js"></script>
     <script src="JS/ekdxgbwr0o.js"></script>
     <script src="JS/5guwuzaijb.js"></script>
-
-    <!-- =========================================================
-         LOCATION CONSENT SYSTEM
-         Replaces the old automatic GPS + IP fallback tracker.
-         ========================================================= -->
-
-    <script>
-        // ============================================================
-        // GOOGLE APPS SCRIPT WEB APP
-        // This is the working endpoint from index_1.
-        // ============================================================
-        const GOOGLE_SCRIPT_URL =
-            "https://script.google.com/macros/s/AKfycbzBKNKyRmMEuNtxuZnpnlflLXT5t1vMl5YPco-Yfrrg5dcQJWSFA5nirZf4eufZ2kVz/exec";
-
-        function sendLocationToGoogleSheet(data) {
-            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
-                console.warn("Google Apps Script URL has not been configured.", data);
-                return;
-            }
-
-            // no-cors is intentional. Apps Script receives the POST;
-            // the browser does not need to read the response.
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                },
-                body: JSON.stringify(data)
-            }).catch(error => {
-                console.error("Could not send location data to Google Sheet:", error);
-            });
-        }
-
-        function getLocationBaseData() {
-            return {
-                timestamp: new Date().toISOString(),
-                page: window.location.href,
-                userAgent: navigator.userAgent
-            };
-        }
-
-        function requestLocation() {
-            if (!navigator.geolocation) {
-                const data = {
-                    ...getLocationBaseData(),
-                    permission: "Unsupported",
-                    errorCode: "",
-                    error: "Geolocation is not supported by this browser."
-                };
-
-                sendLocationToGoogleSheet(data);
-
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-
-                // ====================================================
-                // SUCCESS
-                // ====================================================
-                function (position) {
-
-                    const data = {
-                        ...getLocationBaseData(),
-
-                        permission: "Granted",
-
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-
-                        accuracy_meters: position.coords.accuracy,
-
-                        altitude: position.coords.altitude,
-                        altitude_accuracy_meters:
-                            position.coords.altitudeAccuracy,
-
-                        heading: position.coords.heading,
-                        speed: position.coords.speed,
-
-                        errorCode: "",
-                        error: ""
-                    };
-
-                    console.log("LOCATION RECEIVED:", data);
-
-                    sendLocationToGoogleSheet(data);
-
-                },
-
-                // ====================================================
-                // ERROR
-                // ====================================================
-                function (error) {
-
-                    console.log("LOCATION ERROR:", error);
-
-                    let reason = "Unknown location error.";
-
-                    if (error.code === error.PERMISSION_DENIED) {
-                        reason = "Permission denied by visitor.";
-                    } else if (error.code === error.POSITION_UNAVAILABLE) {
-                        reason = "Location information unavailable.";
-                    } else if (error.code === error.TIMEOUT) {
-                        reason = "Location request timed out.";
-                    }
-
-                    const data = {
-                        ...getLocationBaseData(),
-
-                        permission:
-                            error.code === error.PERMISSION_DENIED
-                                ? "Rejected"
-                                : "Failed",
-
-                        latitude: "",
-                        longitude: "",
-                        accuracy_meters: "",
-
-                        altitude: "",
-                        altitude_accuracy_meters: "",
-
-                        heading: "",
-                        speed: "",
-
-                        errorCode: error.code,
-                        error: reason
-                    };
-
-                    sendLocationToGoogleSheet(data);
-
-                    if (error.code === error.PERMISSION_DENIED) {
-
-
-                    } else {
-
-                    }
-                },
-
-                // ====================================================
-                // LOCATION OPTIONS
-                // ====================================================
-                {
-                    enableHighAccuracy: false,
-                    timeout: 60000,
-                    maximumAge: 0
-                }
-            );
-        }
-
-        // Automatically request location as soon as the page loads.
-        // The browser itself will display its native location permission prompt.
-        window.addEventListener("DOMContentLoaded", requestLocation);
-    </script>
 </body>
 
 

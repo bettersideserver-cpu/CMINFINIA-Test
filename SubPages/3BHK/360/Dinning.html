@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-cm-infinia-visitor-gate="on-navigation">
 
 <head> 
 
@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-N68LBFPB');</script>
 <!-- End Google Tag Manager -->
-<link rel="icon" type="image/ico" href="/images/favicon.ico">
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY88SZVMN0"></script>
 <script>
@@ -26,9 +26,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <title>CM Infinia</title>
   <link rel="stylesheet" href="./../../../wbn05d6fbh.css" />
   <link rel="stylesheet" href="./../../../JS/CSS/yp0wlolwzw.css">
+<script src="../../../JS/cm-config.js"></script>
+<script defer src="../../../JS/cm-visitor-gate.js"></script>
+<script defer src="../../../JS/cm-tour-navigation.js"></script>
+<script defer src="../../../JS/cm-hold.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../images/cm-infinia-logo.svg">
+<link rel="stylesheet" href="../../../JS/cm-brand.css">
 </head>
 
-<body> 
+<body>
+ 
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N68LBFPB"
@@ -54,13 +61,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Bottom Center Panel -->
   <nav class="jumpbar" role="navigation" aria-label="Quick jumps">
     <div class="jumpbar-inner">
+      <button type="button" class="jumpchip is-accent" id="holdRequestBtn">Request to Hold</button>
       <!-- <button class="jumpchip is-accent" id="playWalkthroughBtn">🎥 Walkthrough</button> -->
       <button class="jumpchip" onclick="location.href='../Lobby_Top.html'">MAP</button>
-      <button class="jumpchip" onclick="location.href='Kitchen.html'">Kitchen</button>
-      <button class="jumpchip" onclick="location.href='Lobby.html'">Lobby</button>
-      <button class="jumpchip" onclick="location.href='Room_1.html'">Room 1</button>
-      <button class="jumpchip" onclick="location.href='Room_2.html'">Room 2</button>
-      <button class="jumpchip" onclick="location.href='Room_3.html'">Room 3</button>
+      <button class="jumpchip" data-cm-room="Kitchen.html">Kitchen</button>
+      <button class="jumpchip" data-cm-room="Lobby.html">Lobby</button>
+      <button class="jumpchip" data-cm-room="Room_1.html">Room 1</button>
+      <button class="jumpchip" data-cm-room="Room_2.html">Room 2</button>
+      <button class="jumpchip" data-cm-room="Room_3.html">Room 3</button>
       <button class="jumpchip is-accent" id="openEnquiry">📞 Request Call Back</button>
       <!-- add more as you like -->
     </div>
@@ -81,7 +89,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="callback-modal-body">
-          <form id="enquiryForm" class="callback-form" novalidate>
+          <img class="cm-form-logo" src="../../../images/cm-infinia-logo.svg" alt="CM Infinia">
+<form id="enquiryForm" class="callback-form" novalidate>
             <div class="callback-two">
               <input class="callback-input" name="firstName" placeholder="First Name" required />
               <input class="callback-input" name="lastName" placeholder="Last Name" required />
@@ -208,6 +217,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="./../../../JS/5guwuzaijb.js"></script>
   <script src="./../../../JS/ky0nwmerow.js"></script>
   <script src="./../../../JS/ekdxgbwr0o.js"></script>
+<script src="../../../JS/cm-context.js"></script>
+<script type="module" src="../../../JS/cm-analytics.js"></script>
 </body>
 
 </html>

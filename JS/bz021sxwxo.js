@@ -60,13 +60,16 @@ const REQUEST_CALLBACK_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxz
             return;
         }
 
-        const email = form.email.value.trim();
-        if (!email.includes('@') || !email.includes('.')) {
+        const fullName = (form.elements.namedItem('fullName')?.value || [form.elements.namedItem('firstName')?.value, form.elements.namedItem('lastName')?.value].filter(Boolean).join(' ')).trim();
+        if (!fullName) { alert('Please enter your full name.'); return; }
+        const email = form.elements.namedItem('email')?.value.trim();
+        if (email !== undefined && (!email.includes('@') || !email.includes('.'))) {
             alert('Please enter a valid email address.');
             return;
         }
 
         const fd = new FormData(form);
+        fd.set('fullName', fullName);
         fd.append('formType', 'request_callback');
         fd.append('tower', getTowerName());
         fd.append('page_url', window.location.href);

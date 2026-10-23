@@ -1,0 +1,19 @@
+/* Shared transparent vector branding. */
+
+.cm-form-logo{display:block;width:128px;height:118px;object-fit:contain;margin:0 auto 14px}
+.callback-modal{position:relative;isolation:isolate}.callback-modal::before{content:"";position:absolute;inset:12%;z-index:-1;background:url('../images/cm-infinia-logo.svg') center/contain no-repeat;opacity:.08;pointer-events:none}
+.cm-admin-logo{display:block;width:120px;height:112px;object-fit:contain;margin:0 auto 16px}
+@media(max-width:600px){.cm-form-logo{width:100px;height:92px}}
+
+/* Lobby Top callback form: the site's blue palette and gold watermark. */
+.cm-blue-enquiry .callback-modal{background:linear-gradient(145deg,#0b3c5d,#164d70);border-color:#327298;box-shadow:0 20px 60px #062a4666}
+.cm-blue-enquiry .callback-overlay{background:rgba(5,30,49,.65)}
+.cm-blue-enquiry .callback-close{background:#0b3552;border-color:#397493;color:#fff}
+.cm-blue-enquiry .callback-close:hover{background:#175c85}
+.cm-blue-enquiry .callback-input,.cm-blue-enquiry .callback-phone{background:rgba(239,248,255,.94);border-color:#a9cfe5;color:#123b56}
+.cm-blue-enquiry .callback-input::placeholder,.cm-blue-enquiry .callback-phone input::placeholder{color:#526f83;opacity:1}
+.cm-blue-enquiry .callback-phone input,.cm-blue-enquiry .callback-phone select{color:#123b56;min-width:0}
+.cm-blue-enquiry .callback-phone select{border-right-color:#a9cfe5;min-width:74px}
+.cm-blue-enquiry .submit{background:#0078be;color:#fff}
+.cm-blue-enquiry .submit:hover{background:#00649e}
+.cm-blue-enquiry input:focus-visible,.cm-blue-enquiry select:focus-visible,.cm-blue-enquiry button:focus-visible{outline:2px solid #73caff;outline-offset:3px}
